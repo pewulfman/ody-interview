@@ -3,6 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { jwtConstants } from './constants';
 import { PartnersService } from '../partners/partners.service';
+import { E_PARTNER_NOT_FOUND } from '../common/errors';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -17,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any) {
     const partner = await this.partnersService.findOneById(payload.sub);
     if (!partner) {
-      new InternalServerErrorException('Partner not found');
+      new InternalServerErrorException(E_PARTNER_NOT_FOUND);
     } else {
       return partner;
     }
