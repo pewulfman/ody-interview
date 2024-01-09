@@ -81,5 +81,4 @@ For we will add a table to register partners data
 
 ***New Endpoint***
 
-`POST`, `/login`, `{ name : string, password : string }`, return `Bearer token`
-
+`POST`, `/auth/login`, `{ name : string, password : string }`, return `Bearer token`

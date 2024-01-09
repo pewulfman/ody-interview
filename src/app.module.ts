@@ -6,6 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
 import { ClientModule } from './database/client/client.module';
 import { TravelModule } from './database/travel/travel.module';
+import { PartnersModule } from './partners/partners.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { TravelModule } from './database/travel/travel.module';
     DatabaseModule,
     ClientModule,
     TravelModule,
+    AuthModule,
+    PartnersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
