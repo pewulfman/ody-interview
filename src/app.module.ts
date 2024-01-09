@@ -4,10 +4,9 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
-import { ClientModule } from './database/client/client.module';
-import { TravelModule } from './database/travel/travel.module';
 import { PartnersModule } from './partners/partners.module';
 import { AuthModule } from './auth/auth.module';
+import { ClientsModule } from './clients/clients.module';
 
 @Module({
   imports: [
@@ -27,10 +26,9 @@ import { AuthModule } from './auth/auth.module';
       }),
     }),
     DatabaseModule,
-    ClientModule,
-    TravelModule,
     AuthModule,
     PartnersModule,
+    ClientsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
