@@ -3,7 +3,7 @@ import { CLIENT_REPOSITORY } from '../common/constants';
 import { Repository } from 'typeorm';
 import { Clients } from './clients.entity';
 import { CreateClientDto } from './create-client.dto';
-import { Partner } from 'src/partners/partners.entity';
+import { Partners } from 'src/partners/partners.entity';
 
 @Injectable()
 export class ClientsService {
@@ -16,19 +16,19 @@ export class ClientsService {
     return this.clientRepository.find();
   }
 
-  async findAllByPartner(partner: Partner): Promise<Clients[]> {
+  async findAllByPartner(partner: Partners): Promise<Clients[]> {
     return this.clientRepository.findBy({ partner });
   }
 
   async create(
     createClientDto: CreateClientDto,
-    partner: Partner,
+    partner: Partners,
   ): Promise<void> {
     const client = new Clients();
     client.email = createClientDto.email;
     client.language = createClientDto.language;
     client.countryOfOrigin = createClientDto.countryOfOrigin;
-    client.countryOfResidence = createClientDto.countryOfResidence;
+    client.countryOfDestination = createClientDto.countryOfDestination;
     client.travelDateStart = createClientDto.travelDateStart;
     client.travelDateEnd = createClientDto.travelDateEnd;
     client.partner = partner;

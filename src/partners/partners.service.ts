@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Partner } from './partners.entity';
+import { Partners } from './partners.entity';
 import { PARTNER_REPOSITORY } from '../common/constants';
 import { Repository } from 'typeorm';
 
@@ -7,10 +7,10 @@ import { Repository } from 'typeorm';
 export class PartnersService {
   constructor(
     @Inject(PARTNER_REPOSITORY)
-    private partnerRepository: Repository<Partner>,
+    private partnerRepository: Repository<Partners>,
   ) {}
 
-  private readonly partners: Partner[] = [
+  private readonly partners: Partners[] = [
     {
       id: 1,
       name: 'Partner 1',
@@ -21,15 +21,15 @@ export class PartnersService {
     },
   ];
 
-  async findAll(): Promise<Partner[]> {
+  async findAll(): Promise<Partners[]> {
     return this.partnerRepository.find();
   }
 
-  async findOneByUsername(username: string): Promise<Partner | null> {
+  async findOneByUsername(username: string): Promise<Partners | null> {
     return this.partnerRepository.findOneBy({ name: username });
   }
 
-  async findOneById(id: number): Promise<Partner | null> {
+  async findOneById(id: number): Promise<Partners | null> {
     return this.partnerRepository.findOneBy({ id });
   }
 }

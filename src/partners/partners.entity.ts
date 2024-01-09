@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Partner {
+export class Partners {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -24,6 +24,6 @@ export class Partner {
   @Column()
   password: string;
 
-  @OneToMany(() => Clients, (client) => client.partner)
+  @OneToMany(() => Clients, (client) => client.partner, { cascade: ['update'] })
   clients: Relation<Clients>[];
 }

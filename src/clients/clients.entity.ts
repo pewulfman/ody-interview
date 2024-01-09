@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   Relation,
 } from 'typeorm';
-import { Partner } from '../partners/partners.entity';
+import { Partners } from '../partners/partners.entity';
 
 @Entity()
 export class Clients {
@@ -22,7 +22,7 @@ export class Clients {
   countryOfOrigin: string;
 
   @Column()
-  countryOfResidence: string;
+  countryOfDestination: string;
 
   @Column()
   travelDateStart: Date;
@@ -30,6 +30,6 @@ export class Clients {
   @Column()
   travelDateEnd: Date;
 
-  @ManyToOne(() => Partner, (partner) => partner.clients)
-  partner: Relation<Partner>;
+  @ManyToOne(() => Partners, (partner) => partner.clients, { cascade: true })
+  partner: Relation<Partners>;
 }
