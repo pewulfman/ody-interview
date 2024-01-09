@@ -30,6 +30,6 @@ async function bootstrap() {
   );
 
   // - Start app
-  await app.listen(process.env.PORT ? parseInt(process.env.PORT) : 3000);
+  await app.listen(parseInt(process.env.PORT!)); // existence is verified by Joi in AppModule
 }
 bootstrap();
