@@ -1,8 +1,18 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Relation,
+} from 'typeorm';
+import { Partner } from '../partners/partners.entity';
 
 @Entity()
 export class Clients {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
   email: string;
 
   @Column()
@@ -19,4 +29,7 @@ export class Clients {
 
   @Column()
   travelDateEnd: Date;
+
+  @ManyToOne(() => Partner, (partner) => partner.clients)
+  partner: Relation<Partner>;
 }
