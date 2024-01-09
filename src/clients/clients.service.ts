@@ -16,7 +16,7 @@ export class ClientsService {
     return this.clientRepository.find();
   }
 
-  async findAllByPartner(partner: Partners): Promise<Clients[]> {
+  async findAllWithPartner(partner: Partners): Promise<Clients[]> {
     return this.clientRepository.findBy({ partner });
   }
 

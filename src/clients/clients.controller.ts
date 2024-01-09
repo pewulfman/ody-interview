@@ -22,22 +22,13 @@ export class ClientsController {
   @Get()
   @UseGuards(JwtAuthGuard)
   findAll(@Request() req: any) {
-    this.partnerService.findOneById(req.user.id).then((partner) => {
-      if (partner) {
-        return this.clientService.findAllByPartner(partner);
-      }
-      return null;
-    });
+    return this.clientService.findAllWithPartner(req.user);
   }
 
   @Post()
   @UseGuards(JwtAuthGuard)
   create(@Request() req: any, @Body() createClientDto: CreateClientDto) {
-    this.partnerService.findOneById(req.user.id).then((partner) => {
-      if (partner) {
-        return this.clientService.create(createClientDto, partner);
-      }
-      return null;
-    });
+    const partner = req.user; // returned from JwtAuthGuard.validate
+    return this.clientService.create(createClientDto, partner);
   }
 }
