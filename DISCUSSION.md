@@ -63,13 +63,15 @@ This endpoint should be only available by GWR, or filter the database to only ac
 
 ## Security Mechanism
 
+### Authentication
+
 In my honest opinion, the best security primitive for authentication is asymmetric cryptography. Which can be implemented through SSH, Certificate, PGP.\
 Now, the issues with this approach is that most people are not familiar with it, and it's not very scalable.
 With time, you can develop a plugin for the partners CMG that will handle that for him, but that's out of the scope of this task.
 
 We will resort to a more known authentication process, user/password.
 
-Know that implies a few changes to the database and the API.
+Now that implies a few changes to the database and the API.
 
 For we will add a table to register partners data
 
@@ -82,3 +84,13 @@ For we will add a table to register partners data
 ***New Endpoint***
 
 `POST`, `/auth/login`, `{ name : string, password : string }`, return `Bearer token`
+
+### Authorization
+
+We simply use a JWT Bearer token
+
+### HTTPS
+
+Ideally, we want to redirect all traffic to HTTPS.
+I didn't want to go through creating a certificate for this project.
+Uncomment the line in main.ts and fill the pass to your certificate

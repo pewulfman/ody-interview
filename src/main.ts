@@ -11,7 +11,13 @@ import { writeFileSync } from 'fs';
 
 async function bootstrap() {
   // - NestJS app setup
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    // Setup HTTPS using your pem certificate and key
+    // httpsOptions: {
+    //  key: fs.readFileSync('path/to/private.key'),
+    //  cert: fs.readFileSync('path/to/certificate.pem')
+    // }
+  });
 
   // - Basic security setup
   // -- Helmet setup (https://helmetjs.github.io/)

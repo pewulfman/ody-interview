@@ -41,7 +41,7 @@ export class ClientsController {
   async findAll(@Request() req: any) {
     const partner = req.user; // returned from JwtAuthGuard.validate
     const clientList = await this.clientService.findAllWithPartner(partner);
-    clientList.map((client) => {
+    return clientList.map((client) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { id, ...rest } = client;
       return rest;
