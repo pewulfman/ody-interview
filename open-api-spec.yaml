@@ -1,0 +1,123 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_loadDocs
+      parameters: []
+      responses:
+        "301":
+          description: Redirects to /docs
+  /auth/login:
+    post:
+      operationId: AuthController_login
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginDto"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Token"
+        "406":
+          description: Incorrect email or password
+      tags: &a1
+        - auth
+  /auth/profile:
+    get:
+      operationId: AuthController_getProfile
+      parameters: []
+      responses:
+        "200":
+          description: Return Partners info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        "401":
+          description: Invalid or expired token
+      tags: *a1
+      security:
+        - bearer: []
+  /clients:
+    get:
+      operationId: ClientsController_findAll
+      parameters: []
+      responses:
+        "200":
+          description: List of clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/getClients"
+        "401": &a2
+          description: Invalid or expired token
+      tags: &a3
+        - clients
+      security: &a4
+        - bearer: []
+    post:
+      operationId: ClientsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateClientDto"
+      responses:
+        "200":
+          description: Client created
+        "400":
+          description: Invalid data
+        "401": *a2
+      tags: *a3
+      security: *a4
+info:
+  title: GWP partner API
+  description: Simple API for GWP partner to send clients data
+  version: 1.0.0
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+  schemas:
+    LoginDto:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+    Token:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: JWT token
+      required:
+        - access_token
+    Profile:
+      type: object
+      properties: {}
+    getClients:
+      type: object
+      properties: {}
+    CreateClientDto:
+      type: object
+      properties: {}
