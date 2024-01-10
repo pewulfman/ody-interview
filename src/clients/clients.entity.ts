@@ -6,6 +6,7 @@ import {
   Relation,
 } from 'typeorm';
 import { Partners } from '../partners/partners.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Clients {
@@ -13,21 +14,27 @@ export class Clients {
   id: number;
 
   @Column()
+  @ApiProperty()
   email: string;
 
   @Column()
+  @ApiProperty()
   language: string;
 
   @Column()
+  @ApiProperty()
   countryOfOrigin: string;
 
   @Column()
+  @ApiProperty()
   countryOfDestination: string;
 
   @Column()
+  @ApiProperty()
   travelDateStart: Date;
 
   @Column()
+  @ApiProperty()
   travelDateEnd: Date;
 
   @ManyToOne(() => Partners, (partner) => partner.clients, {

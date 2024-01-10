@@ -94,3 +94,9 @@ We simply use a JWT Bearer token
 Ideally, we want to redirect all traffic to HTTPS.
 I didn't want to go through creating a certificate for this project.
 Uncomment the line in main.ts and fill the pass to your certificate
+
+## Testing
+
+You can find unit testing for each module and an e2e test for the app functionalities
+Alternatively, one can use the docker db and the generated swagger service to perform manual testing.
+One may want to remove token time limit to make manual testing more convenient

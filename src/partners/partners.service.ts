@@ -10,17 +10,6 @@ export class PartnersService {
     private partnerRepository: Repository<Partners>,
   ) {}
 
-  private readonly partners: Partners[] = [
-    {
-      id: 1,
-      name: 'Partner 1',
-      description: 'Partner 1 description',
-      email: 'tech@partner1.com',
-      password: '123456',
-      clients: [],
-    },
-  ];
-
   async findAll(): Promise<Partners[]> {
     return this.partnerRepository.find();
   }

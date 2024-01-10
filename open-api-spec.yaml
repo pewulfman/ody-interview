@@ -114,10 +114,44 @@ components:
         - access_token
     Profile:
       type: object
-      properties: {}
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        email:
+          type: string
+      required:
+        - id
+        - name
+        - description
+        - email
     getClients:
       type: object
-      properties: {}
+      properties:
+        email:
+          type: string
+        language:
+          type: string
+        countryOfOrigin:
+          type: string
+        countryOfDestination:
+          type: string
+        travelDateStart:
+          format: date-time
+          type: string
+        travelDateEnd:
+          format: date-time
+          type: string
+      required:
+        - email
+        - language
+        - countryOfOrigin
+        - countryOfDestination
+        - travelDateStart
+        - travelDateEnd
     CreateClientDto:
       type: object
       properties:

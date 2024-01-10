@@ -7,23 +7,28 @@ import {
   Relation,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Partners {
   @PrimaryGeneratedColumn()
+  @ApiProperty()
   id: number;
 
   @Column()
+  @ApiProperty()
   name: string;
 
   @Column()
+  @ApiProperty()
   description: string;
 
   @Column({ unique: true })
+  @ApiProperty()
   email: string;
 
-  @Exclude()
   @Column()
+  @Exclude()
   password: string;
 
   @OneToMany(() => Clients, (client) => client.partner, { cascade: true })

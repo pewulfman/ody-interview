@@ -9,10 +9,20 @@
 This project uses the [Nest](https://github.com/nestjs/nest) framework (with Typescript) for backend and
 postgres (via TypeORM) for storage
 
+The project works with a dockerized db for dev and testing
+
 ## Installation
 
 ```bash
+# Install dependencies
 $ yarn install
+```
+
+Install docker compose with the method of your choice.
+
+```bash
+# Setup the db and applies migration
+$ make setup-db
 ```
 
 ## Running the app

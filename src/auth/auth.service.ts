@@ -3,7 +3,7 @@ import { PartnersService } from '../partners/partners.service';
 import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from './login.dto';
 import { E_INCORRECT_EMAIL_OR_PASSWORD } from '../common/errors';
-import bcrypt from 'bcrypt';
+import { compare } from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +20,7 @@ export class AuthService {
     if (!user) throw new NotAcceptableException(E_INCORRECT_EMAIL_OR_PASSWORD);
 
     // Check password
-    if (!(await bcrypt.compare(loginDto.password, user.password)))
+    if (!(await compare(loginDto.password, user.password)))
       throw new NotAcceptableException(E_INCORRECT_EMAIL_OR_PASSWORD);
 
     return {

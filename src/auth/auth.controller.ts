@@ -24,7 +24,7 @@ import {
 } from '../common/errors';
 import { Partners } from '../partners/partners.entity';
 
-class Token {
+export class Token {
   @ApiProperty({ description: 'JWT token' })
   access_token: string;
 }

@@ -1,11 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsAlpha,
   IsDate,
   IsDefined,
   IsEmail,
   IsNotEmpty,
-  IsString,
 } from 'class-validator';
+
 export class CreateClientDto {
   @IsDefined()
   @IsEmail()
@@ -14,19 +15,19 @@ export class CreateClientDto {
   readonly email: string;
 
   @IsDefined()
-  @IsString()
+  @IsAlpha()
   @IsNotEmpty()
   @ApiProperty()
   readonly language: string;
 
   @IsDefined()
-  @IsString()
+  @IsAlpha()
   @IsNotEmpty()
   @ApiProperty()
   readonly countryOfOrigin: string;
 
   @IsDefined()
-  @IsString()
+  @IsAlpha()
   @IsNotEmpty()
   @ApiProperty()
   readonly countryOfDestination: string;

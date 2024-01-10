@@ -1,6 +1,6 @@
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { jwtConstants } from './constants';
 import { PartnersService } from '../partners/partners.service';
 import { E_PARTNER_NOT_FOUND } from '../common/errors';
@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any) {
     const partner = await this.partnersService.findOneById(payload.sub);
     if (!partner) {
-      new InternalServerErrorException(E_PARTNER_NOT_FOUND);
+      new UnauthorizedException(E_PARTNER_NOT_FOUND);
     } else {
       return partner;
     }
