@@ -30,7 +30,9 @@ export class Clients {
   @Column()
   travelDateEnd: Date;
 
-  @ManyToOne(() => Partners, (partner) => partner.clients, { cascade: true })
+  @ManyToOne(() => Partners, (partner) => partner.clients, {
+    cascade: ['update', 'recover'],
+  })
   partner: Relation<Partners>;
 
   constructor(partial: Partial<Clients>) {

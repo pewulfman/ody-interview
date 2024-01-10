@@ -19,7 +19,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": [
-    "./src/database/migrations",
     "node_modules",
     "dist"]
 }

@@ -26,6 +26,6 @@ export class Partners {
   @Column()
   password: string;
 
-  @OneToMany(() => Clients, (client) => client.partner, { cascade: ['update'] })
+  @OneToMany(() => Clients, (client) => client.partner, { cascade: true })
   clients: Relation<Clients>[];
 }
