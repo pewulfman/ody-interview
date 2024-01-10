@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { E_TOO_MANY_REQUESTS } from './common/errors';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   // - NestJS app setup
@@ -26,6 +27,17 @@ async function bootstrap() {
       legacyHeaders: false,
       skipSuccessfulRequests: false,
       message: { message: E_TOO_MANY_REQUESTS, statusCode: 403 },
+    }),
+  );
+
+  // - Data validation setup
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   );
 

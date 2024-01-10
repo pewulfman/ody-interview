@@ -32,4 +32,8 @@ export class Clients {
 
   @ManyToOne(() => Partners, (partner) => partner.clients, { cascade: true })
   partner: Relation<Partners>;
+
+  constructor(partial: Partial<Clients>) {
+    Object.assign(this, partial);
+  }
 }

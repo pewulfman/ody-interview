@@ -24,13 +24,7 @@ export class ClientsService {
     createClientDto: CreateClientDto,
     partner: Partners,
   ): Promise<void> {
-    const client = new Clients();
-    client.email = createClientDto.email;
-    client.language = createClientDto.language;
-    client.countryOfOrigin = createClientDto.countryOfOrigin;
-    client.countryOfDestination = createClientDto.countryOfDestination;
-    client.travelDateStart = createClientDto.travelDateStart;
-    client.travelDateEnd = createClientDto.travelDateEnd;
+    const client = new Clients(createClientDto);
     client.partner = partner;
     this.clientRepository.save(client);
   }

@@ -22,7 +22,8 @@ export class ClientsController {
   @Get()
   @UseGuards(JwtAuthGuard)
   findAll(@Request() req: any) {
-    return this.clientService.findAllWithPartner(req.user);
+    const partner = req.user; // returned from JwtAuthGuard.validate
+    return this.clientService.findAllWithPartner(partner);
   }
 
   @Post()

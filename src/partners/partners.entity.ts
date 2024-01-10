@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   Relation,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Partners {
@@ -21,6 +22,7 @@ export class Partners {
   @Column({ unique: true })
   email: string;
 
+  @Exclude()
   @Column()
   password: string;
 
