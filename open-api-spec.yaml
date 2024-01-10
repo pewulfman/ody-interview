@@ -120,4 +120,25 @@ components:
       properties: {}
     CreateClientDto:
       type: object
-      properties: {}
+      properties:
+        email:
+          type: string
+        language:
+          type: string
+        countryOfOrigin:
+          type: string
+        countryOfDestination:
+          type: string
+        travelDateStart:
+          format: date-time
+          type: string
+        travelDateEnd:
+          format: date-time
+          type: string
+      required:
+        - email
+        - language
+        - countryOfOrigin
+        - countryOfDestination
+        - travelDateStart
+        - travelDateEnd
