@@ -13,6 +13,8 @@ import { PartnersService } from '../src/partners/partners.service';
 import { ClientsService } from '../src/clients/clients.service';
 import { CreateClientDto } from '../src/clients/create-client.dto';
 
+// We mockup all database related modules to avoid connecting to the real database and corrupting the data
+
 @Module({})
 class MockDatabaseModule {}
 

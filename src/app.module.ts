@@ -13,6 +13,7 @@ import { ClientsModule } from './clients/clients.module';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
+      // We use Joi to validate the environment variables
       validationSchema: Joi.object({
         PORT: Joi.number().default(4000),
         NODE_ENV: Joi.string().default('development'),

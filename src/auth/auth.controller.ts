@@ -52,6 +52,7 @@ export class AuthController {
   @Get('profile')
   @ApiOkResponse({ description: 'Return Partners info', type: Profile })
   getProfile(@Request() req: any): Profile {
+    // Remove password from response since @Exclude() is not working for now.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...result } = req.user;
     return result;

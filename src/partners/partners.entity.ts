@@ -28,7 +28,7 @@ export class Partners {
   email: string;
 
   @Column()
-  @Exclude()
+  @Exclude() // Should exclude password from response but not working for now.
   password: string;
 
   @OneToMany(() => Clients, (client) => client.partner, { cascade: true })
